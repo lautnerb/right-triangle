@@ -24,6 +24,14 @@ class TestRightTriangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             RightTriangle(c=5)
 
+    def test_inconsistent_creation(self):
+        with self.assertRaises(ValueError):
+            RightTriangle(a=4, b=4, c=5)
+        with self.assertRaises(ValueError):
+            RightTriangle(a=3, b=3, c=5)
+        with self.assertRaises(ValueError):
+            RightTriangle(a=3, b=4, c=6)
+
 
 if __name__ == '__main__':
     unittest.main()

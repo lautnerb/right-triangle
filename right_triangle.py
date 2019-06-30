@@ -61,6 +61,7 @@ class RightTriangle:
         hypotenuse = self._c
         other_leg = math.sqrt(hypotenuse ** 2 - leg ** 2)
         self._set_other_leg(other_leg)
+        self._calculate_angles()
 
     def _set_other_leg(self, other_leg):
         if self._a is None:
@@ -69,6 +70,10 @@ class RightTriangle:
             self._b = other_leg
         else:
             self._raise_error_if_attribute_inconsistent(self._b, other_leg)
+
+    def _calculate_angles(self):
+        self._a_angle = math.degrees(math.asin(self.a / self.c))
+        self._b_angle = 90 - self.a_angle
 
     @staticmethod
     def _raise_error_if_attribute_inconsistent(attribute_value, expected_value):

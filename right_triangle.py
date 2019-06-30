@@ -31,3 +31,11 @@ class RightTriangle:
     @property
     def b_angle(self) -> float:
         return self._b_angle
+
+    def __str__(self):
+        return (f"RightTriangle"
+                + f"\n\ta = {self.a}"
+                + f"\n\tb = {self.b}"
+                + f"\n\tc = {self.c}"
+                + f"\n\tA = {self.a_angle: .2f}°"
+                + f"\n\tB = {self.b_angle: .2f}°")

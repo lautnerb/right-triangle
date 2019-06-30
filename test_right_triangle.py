@@ -16,6 +16,14 @@ class TestRightTriangle(unittest.TestCase):
         self.assertAlmostEqual(triangle.a_angle, 36.86989765)
         self.assertAlmostEqual(triangle.b_angle, 53.13010235)
 
+    def test_insufficient_creation(self):
+        with self.assertRaises(ValueError):
+            RightTriangle(a=3)
+        with self.assertRaises(ValueError):
+            RightTriangle(b=4)
+        with self.assertRaises(ValueError):
+            RightTriangle(c=5)
+
 
 if __name__ == '__main__':
     unittest.main()

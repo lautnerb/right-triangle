@@ -15,22 +15,14 @@ class RightTriangle:
         self._a_angle = a_angle
         self._b_angle = b_angle
 
-        try:
-            if self._a is not None and self._c is not None:
-                self._b = self._calculate_leg_from_a_leg_and_hypotenuse(self._a, self._c)
-                self._calculate_angles()
-            elif self._b is not None and self._c is not None:
-                self._a = self._calculate_leg_from_a_leg_and_hypotenuse(self._b, self._c)
-                self._calculate_angles()
-            else:
-                raise ValueError(f"Insufficient parameters for a RightTriangle:\n"
-                                 + f"\ta = {a}"
-                                 + f"\tb = {b}"
-                                 + f"\tc = {c}"
-                                 + f"\ta_angle = {a_angle}"
-                                 + f"\tb_angle = {b_angle}")
-        except ValueError:
-            raise ValueError(f"Inconsistent parameters for a RightTriangle:\n"
+        if self._a is not None and self._c is not None:
+            self._b = self._calculate_leg_from_a_leg_and_hypotenuse(self._a, self._c)
+            self._calculate_angles()
+        elif self._b is not None and self._c is not None:
+            self._a = self._calculate_leg_from_a_leg_and_hypotenuse(self._b, self._c)
+            self._calculate_angles()
+        else:
+            raise ValueError(f"Insufficient parameters for a RightTriangle:\n"
                              + f"\ta = {a}"
                              + f"\tb = {b}"
                              + f"\tc = {c}"

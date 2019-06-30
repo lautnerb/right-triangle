@@ -23,11 +23,7 @@ class RightTriangle:
             self._calculate_angles()
         else:
             raise ValueError(f"Insufficient parameters for a RightTriangle:\n"
-                             + f"\ta = {a}"
-                             + f"\tb = {b}"
-                             + f"\tc = {c}"
-                             + f"\ta_angle = {a_angle}"
-                             + f"\tb_angle = {b_angle}")
+                             + self._parameters_to_string(a, b, c, a_angle, b_angle))
 
     @property
     def a(self) -> float:
@@ -62,6 +58,14 @@ class RightTriangle:
     def _raise_error_if_attribute_inconsistent(attribute_value, expected_value):
         if attribute_value != expected_value:
             raise ValueError()
+
+    @staticmethod
+    def _parameters_to_string(a, b, c, a_angle, b_angle):
+        return (f"\ta = {a}\n"
+                + f"\tb = {b}\n"
+                + f"\tc = {c}\n"
+                + f"\ta_angle = {a_angle}\n"
+                + f"\tb_angle = {b_angle}")
 
     def __str__(self):
         return (f"RightTriangle"

@@ -14,16 +14,19 @@ class RightTriangle:
         self._c = c
         self._a_angle = a_angle
         self._b_angle = b_angle
+        self._parameters = (a, b, c, a_angle, b_angle)
 
         if self._a is not None and self._c is not None:
             self._b = self._calculate_leg_from_a_leg_and_hypotenuse(self._a, self._c)
+            self._raise_error_if_parameter_inconsistent(b, self._b)
             self._calculate_angles()
         elif self._b is not None and self._c is not None:
             self._a = self._calculate_leg_from_a_leg_and_hypotenuse(self._b, self._c)
+            self._raise_error_if_parameter_inconsistent(a, self._a)
             self._calculate_angles()
         else:
             raise ValueError(f"Insufficient parameters for a RightTriangle:\n"
-                             + self._parameters_to_string(a, b, c, a_angle, b_angle))
+                             + self._parameters_to_string(*self._parameters))
 
     @property
     def a(self) -> float:
@@ -54,10 +57,11 @@ class RightTriangle:
         self._a_angle = math.degrees(math.asin(self.a / self.c))
         self._b_angle = 90 - self.a_angle
 
-    @staticmethod
-    def _raise_error_if_attribute_inconsistent(attribute_value, expected_value):
-        if attribute_value != expected_value:
-            raise ValueError()
+    def _raise_error_if_parameter_inconsistent(self, parameter_value, expected_value):
+        if (parameter_value is not None
+                and parameter_value != expected_value):
+            raise ValueError(f"Inconsistent parameters for a RightTriangle:\n"
+                             + self._parameters_to_string(*self._parameters))
 
     @staticmethod
     def _parameters_to_string(a, b, c, a_angle, b_angle):

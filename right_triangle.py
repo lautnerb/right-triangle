@@ -1,3 +1,6 @@
+import math
+
+
 class RightTriangle:
     def __init__(
             self,
@@ -11,6 +14,19 @@ class RightTriangle:
         self._c = c
         self._a_angle = a_angle
         self._b_angle = b_angle
+        self._parameters = (a, b, c, a_angle, b_angle)
+
+        if self._a is not None and self._c is not None:
+            self._b = self._calculate_leg_from_a_leg_and_hypotenuse(self._a, self._c)
+            self._raise_error_if_parameter_inconsistent(b, self._b)
+            self._calculate_angles()
+        elif self._b is not None and self._c is not None:
+            self._a = self._calculate_leg_from_a_leg_and_hypotenuse(self._b, self._c)
+            self._raise_error_if_parameter_inconsistent(a, self._a)
+            self._calculate_angles()
+        else:
+            raise ValueError(f"Insufficient parameters for a RightTriangle:\n"
+                             + self._parameters_to_string(*self._parameters))
 
     @property
     def a(self) -> float:
@@ -31,6 +47,29 @@ class RightTriangle:
     @property
     def b_angle(self) -> float:
         return self._b_angle
+
+    @staticmethod
+    def _calculate_leg_from_a_leg_and_hypotenuse(leg, hypotenuse):
+        other_leg = math.sqrt(hypotenuse ** 2 - leg ** 2)
+        return other_leg
+
+    def _calculate_angles(self):
+        self._a_angle = math.degrees(math.asin(self.a / self.c))
+        self._b_angle = 90 - self.a_angle
+
+    def _raise_error_if_parameter_inconsistent(self, parameter_value, expected_value):
+        if (parameter_value is not None
+                and parameter_value != expected_value):
+            raise ValueError(f"Inconsistent parameters for a RightTriangle:\n"
+                             + self._parameters_to_string(*self._parameters))
+
+    @staticmethod
+    def _parameters_to_string(a, b, c, a_angle, b_angle):
+        return (f"\ta = {a}\n"
+                + f"\tb = {b}\n"
+                + f"\tc = {c}\n"
+                + f"\ta_angle = {a_angle}\n"
+                + f"\tb_angle = {b_angle}")
 
     def __str__(self):
         return (f"RightTriangle"

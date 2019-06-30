@@ -17,9 +17,11 @@ class RightTriangle:
 
         try:
             if self._a is not None and self._c is not None:
-                self._init_from_leg_and_hypotenuse()
+                self._b = math.sqrt(self._c ** 2 - self._a ** 2)
+                self._calculate_angles()
             elif self._b is not None and self._c is not None:
-                self._init_from_leg_and_hypotenuse()
+                self._a = math.sqrt(self._c ** 2 - self._b ** 2)
+                self._calculate_angles()
             else:
                 raise ValueError(f"Insufficient parameters for a RightTriangle:\n"
                                  + f"\ta = {a}"

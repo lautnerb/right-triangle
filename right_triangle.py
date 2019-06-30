@@ -15,15 +15,25 @@ class RightTriangle:
         self._a_angle = a_angle
         self._b_angle = b_angle
 
-        if self._has_leg_and_hypotenuse:
-            try:
+        try:
+            if self._a is not None and self._c is not None:
                 self._init_from_leg_and_hypotenuse()
-            except ValueError:
-                raise ValueError(f"Inconsistent RightTriangle(\n"
+            elif self._b is not None and self._c is not None:
+                self._init_from_leg_and_hypotenuse()
+            else:
+                raise ValueError(f"Insufficient parameters for a RightTriangle:\n"
                                  + f"\ta = {a}"
                                  + f"\tb = {b}"
                                  + f"\tc = {c}"
-                                 + "a or b should not be given")
+                                 + f"\ta_angle = {a_angle}"
+                                 + f"\tb_angle = {b_angle}")
+        except ValueError:
+            raise ValueError(f"Inconsistent parameters for a RightTriangle:\n"
+                             + f"\ta = {a}"
+                             + f"\tb = {b}"
+                             + f"\tc = {c}"
+                             + f"\ta_angle = {a_angle}"
+                             + f"\tb_angle = {b_angle}")
 
     @property
     def a(self) -> float:
@@ -44,17 +54,6 @@ class RightTriangle:
     @property
     def b_angle(self) -> float:
         return self._b_angle
-
-    def _has_leg_and_hypotenuse(self):
-        return (self._has_leg()
-                and self._has_hypotenuse())
-
-    def _has_leg(self):
-        return (self._a is not None
-                or self._b is not None)
-
-    def _has_hypotenuse(self):
-        return self._c is not None
 
     def _init_from_leg_and_hypotenuse(self):
         leg = self._a if self._a is not None else self._b

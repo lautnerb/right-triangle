@@ -17,10 +17,10 @@ class RightTriangle:
 
         try:
             if self._a is not None and self._c is not None:
-                self._b = math.sqrt(self._c ** 2 - self._a ** 2)
+                self._b = self._calculate_leg_from_a_leg_and_hypotenuse(self._a, self._c)
                 self._calculate_angles()
             elif self._b is not None and self._c is not None:
-                self._a = math.sqrt(self._c ** 2 - self._b ** 2)
+                self._a = self._calculate_leg_from_a_leg_and_hypotenuse(self._b, self._c)
                 self._calculate_angles()
             else:
                 raise ValueError(f"Insufficient parameters for a RightTriangle:\n"
@@ -57,20 +57,10 @@ class RightTriangle:
     def b_angle(self) -> float:
         return self._b_angle
 
-    def _init_from_leg_and_hypotenuse(self):
-        leg = self._a if self._a is not None else self._b
-        hypotenuse = self._c
+    @staticmethod
+    def _calculate_leg_from_a_leg_and_hypotenuse(leg, hypotenuse):
         other_leg = math.sqrt(hypotenuse ** 2 - leg ** 2)
-        self._set_other_leg(other_leg)
-        self._calculate_angles()
-
-    def _set_other_leg(self, other_leg):
-        if self._a is None:
-            self._a = other_leg
-        elif self._b is None:
-            self._b = other_leg
-        else:
-            self._raise_error_if_attribute_inconsistent(self._b, other_leg)
+        return other_leg
 
     def _calculate_angles(self):
         self._a_angle = math.degrees(math.asin(self.a / self.c))

@@ -79,3 +79,11 @@ class RightTriangle:
     def _raise_error_if_attribute_inconsistent(attribute_value, expected_value):
         if attribute_value != expected_value:
             raise ValueError()
+
+    def __str__(self):
+        return (f"RightTriangle"
+                + f"\n\ta = {self.a}"
+                + f"\n\tb = {self.b}"
+                + f"\n\tc = {self.c}"
+                + f"\n\tA = {self.a_angle: .2f}°"
+                + f"\n\tB = {self.b_angle: .2f}°")

@@ -9,7 +9,7 @@ setup(
     packages=[],
     py_modules="right_triangle",
     url="https://github.com/lautnerb/right-triangle",
-    license="Unlicense",
+    license="MIT",
     author="Balazs Lautner",
     author_email="lautner.balazs@gmail.com",
     description="Simple Python package that can be used to do calculations with right-angled triangles",

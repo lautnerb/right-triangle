@@ -7,7 +7,7 @@ setup(
     name="right-triangle",
     version="0.1.0",
     packages=[],
-    py_modules="right_triangle",
+    py_modules=["right_triangle"],
     url="https://github.com/lautnerb/right-triangle",
     license="MIT",
     author="Balazs Lautner",

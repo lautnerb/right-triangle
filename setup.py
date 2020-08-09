@@ -12,11 +12,12 @@ setup(
     license="MIT",
     author="Balazs Lautner",
     author_email="lautner.balazs@gmail.com",
-    description="Simple Python package that can be used to do calculations with right-angled triangles",
+    description="Simple Python package that can be used to do calculations "
+                "with right-angled triangles",
     long_description=long_description,
     long_description_content_type="text/markdown",
     install_requires=[],
-    python_requires='~=3.7',
+    python_requires='~=3.8',
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",

@@ -5,8 +5,7 @@ with open("README.rst", "r") as f:
 
 setup(
     name="right-triangle",
-    version="0.1.0",
-    packages=[],
+    version="0.2.0.dev0",
     py_modules=["right_triangle"],
     url="https://github.com/lautnerb/right-triangle",
     license="MIT",
@@ -16,10 +15,8 @@ setup(
                 "with right-angled triangles",
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    install_requires=[],
     python_requires='~=3.8',
     classifiers=[
-        "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",

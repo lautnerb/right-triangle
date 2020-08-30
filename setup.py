@@ -1,6 +1,6 @@
 from setuptools import setup
 
-with open("README.md", "r") as f:
+with open("README.rst", "r") as f:
     long_description = f.read()
 
 setup(
@@ -15,7 +15,7 @@ setup(
     description="Simple Python package that can be used to do calculations "
                 "with right-angled triangles",
     long_description=long_description,
-    long_description_content_type="text/markdown",
+    long_description_content_type="text/x-rst",
     install_requires=[],
     python_requires='~=3.8',
     classifiers=[

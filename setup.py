@@ -5,7 +5,7 @@ with open("README.rst", "r") as f:
 
 setup(
     name="right-triangle",
-    version="0.2.0.dev0",
+    version="0.2.0",
     py_modules=["right_triangle"],
     url="https://github.com/lautnerb/right-triangle",
     license="MIT",
